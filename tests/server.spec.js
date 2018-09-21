@@ -37,4 +37,14 @@ describe('server/app.js', function() {
       done();
     });
   });
+  it('page displays subtitle', (done) => {
+  chai.request(server)
+    .get('/')
+    .end((err, res) => {
+      console.log(res.text);
+      expect(err).not.exist;
+      expect(res.text).to.contain("You're serving up the public folder, but do your tests pass?");
+      done();
+    });
+  });
 })
